@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Just Post</title>
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <span id="head-title">Just Post</span>
+        <div class="wrap-info">
+            <span>This site not be responsive.</span>
+            <span>This site is developed by django</span>
+            <span>It`s simple, because i developed it just for fun</span>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            {% for post in posts.all %}
+                <div class="wrap-text">
+                    <h4>{{post.name}}</h4>
+                    <p>
+                        {{post.content|truncatewords:90}}
+                    </p>
+                    <span></span>
+                </div>
+            {% endfor %}
+        </section>
+        <section class="container">
+            <form action="" method="POST">
+                <div class="wrap-input">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" placeholder="Name..." required>
+                </div>
+                <div class="wrap-input">
+                    <label for="text-box">Text</label>
+                    <textarea name="my_textarea" id="text-box" cols="30" rows="10" placeholder="Write your text here..." required>
+                    </textarea>
+                </div>
+                <button class="submit-btn" type="submit">Post</button>
+                <button class="upload-img">click to upload image <br> ...</button>
+                <input type="file">
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap-icon">
+            <span><a href="https://github.com/mohsnM">github <img src="../../static/blog/svg/github.svg" alt=""></a></span>
+            <span><a href="#">twitter <img src="../../static/blog/svg/twitter.svg" alt=""></a></span>
+        </div>
+        <br>
+        <div class="copyright">Copy Right &#169; 2020 November 3 </div>
+    </footer>
+</body>
+</html>
+
+
