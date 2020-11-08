@@ -1,0 +1,10 @@
+{% extends 'log_app/base.html' %}
+
+{% block content %}
+    <h3>Add new topic</h3>
+    <form action="{% url 'log_app:new_topic' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add topic</button>
+    </form>
+{% endblock content %}
