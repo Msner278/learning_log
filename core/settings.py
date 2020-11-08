@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '+^_(+j#7h4+7v!f&_ftu9&6xa&fh#d=*6=0f-bxaf6xo%5wly('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False  # Change mode to deploy
 
 ALLOWED_HOSTS = []
 
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +122,7 @@ STATIC_URL = '/static/'
 # MY setting
 LOGIN_URL = 'users:login'
 
-
 # Heroku Settings
 import django_heroku
+
 django_heroku.settings(locals())

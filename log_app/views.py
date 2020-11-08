@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import models
 from . import forms
 from django.http import Http404
@@ -18,7 +18,7 @@ def topics(request):
 
 @login_required
 def topic(request, topic_id):
-    topic_context = models.Topic.objects.get(id=topic_id)
+    topic_context = get_object_or_404(models.Topic, id=topic_id)
     if topic_context.owner != request.user:
         raise Http404
     entries = topic_context.entry_set.order_by('-create_at')
